@@ -1,5 +1,6 @@
 docker-nginx-sftp
 =================
+[![Docker Pulls](https://img.shields.io/docker/pulls/bdominik/docker-nginx-sftp.svg)](https://hub.docker.com/r/bdominik/docker-nginx-sftp/) [![Docker layers](https://images.microbadger.com/badges/image/bdominik/docker-nginx-sftp.svg)](https://microbadger.com/images/bdominik/docker-nginx-sftp) [![Github Stars](https://img.shields.io/github/stars/bdominik/docker-nginx-sftp.svg?label=github%20%E2%98%85)](https://github.com/tomav/docker-mailserver/)
 
 Purpose
 -------
