@@ -21,11 +21,22 @@ else
   echo "${USER}:${PASSWORD}" | chpasswd
 fi
 
+if [ ! -d /data/webroot ]; then
+  echo "Creating /data/webroot"
+  mkdir -p /data/webroot
+fi
+
 # The folder itself must be owned by root, the contents
 # by the user
-echo "Fixing permissions for user ${USER} in /data"
-chown -Rv ${USER}:${USER} /data
+echo "Fixing permissions for user ${USER} in /data/webroot"
+chown -Rv ${USER}:${USER} /data/webroot
+chmod -Rv 644 /data/webroot
+chown root.root /data/webroot
+chmod 777 /data/webroot
+
+echo "Fixing permission to root in /data"
 chown root.root /data
+chmod 755 /data
 
 # Generate unique ssh keys for this container, if needed
 if [ ! -f /etc/ssh/keys/ssh_host_ed25519_key ]; then

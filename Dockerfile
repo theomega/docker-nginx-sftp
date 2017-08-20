@@ -16,14 +16,11 @@ ADD sshd_config /etc/ssh/
 
 # Supervisord
 ADD supervisord.ini /etc/supervisor.d/
-ADD docker_kill.py /
-ADD entrypoint.sh /
+ADD docker_kill.py entrypoint.sh /
 
 # Configuration for Container
-VOLUME /data
-VOLUME /etc/ssh/keys/
-EXPOSE 80
-EXPOSE 22
+VOLUME /data /etc/ssh/keys/
+EXPOSE 22 80
 
 # Creates users, checks permissions, generates host-keys and launches supervisord
 CMD ["/entrypoint.sh"]

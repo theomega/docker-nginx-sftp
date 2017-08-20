@@ -22,6 +22,11 @@ To run this container use
      /tmp/data_for_container:/data -v /tmp/keys_for_container:/etc/ssh/keys/
      bdominik/docker-nginx-sftp:latest
 
+You can then using any sftp client connect to localhost:2222 and put files into
+the /webroot folder. You need to log in with the provided username and password.
+Files from the /webroot folder are served then via http on
+http://localhost:8888.
+
 Configuration
 -------------
 There are two environment variables which you have to provide when launching the
