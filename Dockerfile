@@ -1,5 +1,8 @@
 FROM alpine:3.6
 
+MAINTAINER Dominik Bruhn "dominik@dbruhn.de"
+
+# Install packages
 RUN apk add --no-cache nginx supervisor openssh-server openssh-sftp-server
 
 # NGINX
@@ -14,12 +17,13 @@ ADD sshd_config /etc/ssh/
 # Supervisord
 ADD supervisord.ini /etc/supervisor.d/
 ADD docker_kill.py /
-
 ADD entrypoint.sh /
 
+# Configuration for Container
 VOLUME /data
 VOLUME /etc/ssh/keys/
 EXPOSE 80
 EXPOSE 22
 
+# Creates users, checks permissions, generates host-keys and launches supervisord
 CMD ["/entrypoint.sh"]
