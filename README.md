@@ -51,10 +51,15 @@ on alpine linux and contains the following additional packages:
   * `nginx` to provide the http server
   * `supervisord` to orchestrate the two processes (nginx + openssh) and keep
     them running.
+
 The packages are configured using the configuration files in this repo.
 Supervisord is configured to fail the whole container is either of the two
 processes fail. All the logging goes to the docker output, so you will see both,
 the nginx access log and the sftp connection output.
+
+A small python script called `docker_kill.py` is used as an eventlistener for
+supervisord. The listener automatically kills the whole supervisord (and with
+this the whole container) if one of the subprocesses (nginx and sshd) fail.
 
 Anti-Pattern
 ------------
