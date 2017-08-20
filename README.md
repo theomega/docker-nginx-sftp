@@ -9,6 +9,10 @@ can be modified using sftp. This is done by launching both, an http server
 static files can be persisted on a volume to make the surive restarts of the
 container.
 
+This container allows to host a website on a docker host where some third party
+(who knows the credentials) can modify the website via any sftp client. There
+are sftp clients for nearly all operating systems.
+
 Usage
 -----
 To run this container use
@@ -22,6 +26,10 @@ Configuration
 There are two environment variables which you have to provide when launching the
 container to specify the username and the password which can then be used to log
 into the sftp server. These are called `USER` and `PASSWORD.
+
+The container listens on two ports, 22 for the sftp server and 80 for the http
+server. The container intentionally does not provide an SSL/HTTPS interface as
+this can be handled using other docker container easily.
 
 Volumes
 -------
